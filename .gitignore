@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.idea/
+.venv/
+venv/
+data/
+*.lmdb/
+exp/STM_NM4_QP37_train/
+exp/**/log_test_current.log
+exp/**/log_test_ssim_current.log
