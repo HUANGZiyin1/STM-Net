@@ -1,0 +1,36 @@
+<<<<<<<<<< Test >>>>>>>>>>
+Timestamp: [20260323_223033]
+
+<<<<<<<<<< Options >>>>>>>>>>
+restore_iter: 300000
+pbar_len: 100
+criterion:[
+  type: PSNR
+  unit: dB
+  ]
+checkpoint_save_path: exp/STM_NM4_LDQP37_1920dataset_enlarge300x/ckp_300000.pt
+
+loading model exp/STM_NM4_LDQP37_1920dataset_enlarge300x/ckp_300000.pt...
+> model exp/STM_NM4_LDQP37_1920dataset_enlarge300x/ckp_300000.pt loaded.
+
+<<<<<<<<<< Results >>>>>>>>>>
+BigBuck_1920x1080_60p_8b_404_444.yuv: [36.249] dB -> [36.734] dB -> delta [0.485] dB
+ChineseEditing_1920x1080_60_8bit_600_444.yuv: [33.044] dB -> [33.694] dB -> delta [0.650] dB
+EnglishDocumentEditing_1920x1080_30_8bit_300_444.yuv: [35.378] dB -> [36.653] dB -> delta [1.275] dB
+MissionControlClip1_2560x1440_60p_8b_600_444.yuv: [34.143] dB -> [34.925] dB -> delta [0.783] dB
+MissionControlClip2_2560x1440_60_8bit_600_444.yuv: [35.292] dB -> [36.040] dB -> delta [0.748] dB
+MissionControlClip3_1920x1080_60_8bit_600_444.yuv: [34.947] dB -> [35.671] dB -> delta [0.724] dB
+Paperpdf_1920x1080_60_8bit_300_444.yuv: [35.589] dB -> [37.511] dB -> delta [1.922] dB
+Sephora_1920x1080_60_8bit_300_444.yuv: [37.074] dB -> [38.347] dB -> delta [1.273] dB
+mixvideo1_1920x1080_60_8bit_300_444.yuv: [34.214] dB -> [34.791] dB -> delta [0.577] dB
+scSlideShow_1280x720_20_8bit_500_444.yuv: [38.152] dB -> [39.357] dB -> delta [1.205] dB
+scmap_1280x720_60_8bit_600_444.yuv: [34.024] dB -> [34.595] dB -> delta [0.571] dB
+scprogramming_1280x720_60_8bit_600_444.yuv: [34.662] dB -> [35.311] dB -> delta [0.649] dB
+scwebbrowsing_1280x720_30_8bit_300_444.yuv: [37.409] dB -> [38.889] dB -> delta [1.480] dB
+> ori: [35.398] dB
+> ave: [36.348] dB
+> delta: [0.949] dB
+TOTAL TIME: [0.98874] ms/CTU
+
+<<<<<<<<<< Goodbye >>>>>>>>>>
+Timestamp: [20260323_231945]
