@@ -10,10 +10,9 @@ Ziyin Huang and Sik-Ho Tsang contributed equally to this work.
 
 STM-Net enhances compressed screen content videos using temporal information from neighboring frames and spatial detail from the current frame. It combines a Prior-Guided Spatio-Temporal Dispatcher (PG-STD), Bidirectional Temporal Feature Extraction (BTFE), and Cascaded Multi-scale Feature Distillation (CMFD).
 
-This repository provides the `STM_Net_NM4.py` model, training and evaluation scripts, LMDB preparation, and a QP37 checkpoint at 300,000 iterations. Only the QP37 checkpoint is included in this release.
+This repository provides the STM-Net-L model, training and evaluation scripts, LMDB preparation, and a QP37 checkpoint at 300,000 iterations. Only the QP37 checkpoint is included in this release.
 
-The training entry point is the original `trainnobest.py`, renamed to `train.py`. Model, training, dataset, and evaluation logic are preserved. Executable-file edits are limited to data roots, configuration-file paths, and test-log output paths. The YAML files select the requested QP37 data and checkpoint. The LMDB-building entry point is copied unchanged from the original `HAWT/create_lmdb_mfqev2.py` and uses the existing STM-Net utilities.
-
+Model, training, dataset, and evaluation logic are preserved. Executable-file edits are limited to data roots, configuration-file paths, and test-log output paths. The YAML files select the requested QP37 data and checkpoint. 
 ## Files
 
 ```text
@@ -88,19 +87,17 @@ Run from the `STM-Net` directory after placing ground-truth YUVs in `data/train/
 python create_lmdb_mfqev2.py --opt_path option_R3_mfqev2_4G.yml
 ```
 
-This creates `data/scc_LD_HAWTgt37.lmdb/` and `data/scc_LD_HAWTlq37.lmdb/`. The original helper refuses to overwrite an existing LMDB directory.
+This creates `data/scc_LD_HAWTgt37.lmdb/` and `data/scc_LD_HAWTlq37.lmdb/`.
 
-The builder uses `radius = 2`: non-overlapping groups of five LQ frames, with the third physical frame as GT. LQ keys are `im1.png` through `im5.png`; the GT key remains `im4.png`, as in the existing prepared databases. The loader reads the GT key from `meta_info.txt`, so this name does not change its physical frame alignment. Older comments mentioning seven frames or radius 3 are preserved verbatim; the executable setting is radius 2.
+The builder uses `radius = 2`: non-overlapping groups of five LQ frames, with the third physical frame as GT. LQ keys are `im1.png` through `im5.png`; the GT key remains `im4.png`, as in the existing prepared databases. 
 
-Ground-truth and compressed files are sorted separately and paired by their positions in those lists. Ensure the lists contain corresponding videos in the same order, with matching dimensions and frame counts. The builder processes at most the first 300 frames of each video and discards an incomplete final five-frame group. Its original helper buffers the selected Y frames as encoded images in memory before writing the database.
 
 ## Training
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python train.py --opt_path option_R3_mfqev2_4G.yml
 ```
-
-The original two-GPU launcher command, with the renamed training entry point, is:
+or
 
 ```bash
 CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port=12354 train.py --opt_path option_R3_mfqev2_4G.yml
@@ -132,6 +129,3 @@ Y-SSIM:
 CUDA_VISIBLE_DEVICES=0 python test_ssim.py --opt_path option_test_QP37.yml
 ```
 
-Results are written to `log_test_current.log` and `log_test_ssim_current.log`, respectively, in the checkpoint directory. These output paths preserve the packaged historical `log_test.log`. Each script retains its original score aggregation and output format.
-
-The included `log.log` and `log_test.log` are historical experiment records, not results produced while preparing this release.
