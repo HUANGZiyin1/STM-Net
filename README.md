@@ -6,7 +6,7 @@ PyTorch implementation of **Spatial-Temporal Multi-scale Network for Screen Cont
 
 Ziyin Huang and Sik-Ho Tsang contributed equally to this work.
 
-**Paper status:** Submitted; currently under major revision.
+**Paper status:** Submitted; currently under reject with resubmit.
 
 STM-Net enhances compressed screen content videos using temporal information from neighboring frames and spatial detail from the current frame. It combines a Prior-Guided Spatio-Temporal Dispatcher (PG-STD), Bidirectional Temporal Feature Extraction (BTFE), and Cascaded Multi-scale Feature Distillation (CMFD).
 
